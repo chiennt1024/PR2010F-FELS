@@ -1,0 +1,37 @@
+.detail-banner{
+	background: url('/assets/banner-course-detail.png');
+	width: 100%;
+    display: inline-block;
+    background-size: cover !important;
+    background-position: center !important;
+    padding-bottom: 20px;
+    color: rgba(27, 27, 27, 0.45);
+    font-size: 16px;
+}
+.course-main__content__name {
+	padding-left: 15px;
+    font-family: 'Poppins ExtraBold';
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -1.2px;
+    line-height: 72px;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+.certificates__item {
+    position: relative;
+    border: 1px solid #DEE5EF;
+    background: #FFFFFF;
+    border-radius: 6px;
+    width: 100%;
+}
+.breadcrumb-item a{
+	color: #C4CFDD !important;
+    font-size: 14px;	
+}
+
+.breadcrumb-item{
+	color: #C4CFDD !important;
+    font-size: 14px;	
+}
