@@ -11,7 +11,7 @@ import jquery from 'jquery';
 window.$ = window.jquery = jquery;
 require("jquery")
 import "bootstrap"
-require('popper')
+import "@fortawesome/fontawesome-free/js/all";
 
 Rails.start()
 Turbolinks.start()
