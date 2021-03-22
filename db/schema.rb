@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_040943) do
+ActiveRecord::Schema.define(version: 2021_03_19_090254) do
 
-  create_table "answers", charset: "latin1", force: :cascade do |t|
+  create_table "answers", charset: "utf8", force: :cascade do |t|
     t.integer "question_id"
     t.text "answer_content"
     t.boolean "is_correct"
@@ -20,27 +20,27 @@ ActiveRecord::Schema.define(version: 2021_03_18_040943) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "courses", charset: "latin1", force: :cascade do |t|
+  create_table "courses", charset: "utf8", force: :cascade do |t|
     t.string "course_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "exam_answers", charset: "latin1", force: :cascade do |t|
+  create_table "exam_answers", charset: "utf8", force: :cascade do |t|
     t.integer "answer_id"
     t.integer "exam_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "exam_questions", charset: "latin1", force: :cascade do |t|
+  create_table "exam_questions", charset: "utf8", force: :cascade do |t|
     t.integer "question_id"
     t.integer "exam_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "exams", charset: "latin1", force: :cascade do |t|
+  create_table "exams", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
     t.integer "course_id"
@@ -49,25 +49,39 @@ ActiveRecord::Schema.define(version: 2021_03_18_040943) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "questions", charset: "latin1", force: :cascade do |t|
+  create_table "questions", charset: "utf8", force: :cascade do |t|
     t.string "question_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "user_courses", charset: "latin1", force: :cascade do |t|
+  create_table "user_courses", charset: "utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "course_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "users", charset: "latin1", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.integer "role"
+  create_table "users", charset: "utf8", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "provider"
+    t.string "uid"
+    t.string "image"
+    t.string "name"
+    t.integer "role"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end

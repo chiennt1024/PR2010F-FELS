@@ -1,10 +1,14 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.2'
+ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'
+gem "devise"
+gem "omniauth", '~>1.0.0'
+gem "omniauth-google-oauth2"
+gem "omniauth-facebook"
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 # Use Puma as the app server

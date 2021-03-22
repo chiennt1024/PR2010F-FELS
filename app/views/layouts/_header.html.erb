@@ -27,10 +27,14 @@
     		</div>
         </li>
         <li class="nav-item p-0">
-          <a class="nav-link" href="#">Sign In</a>
+          <% if current_user  %>
+          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <% else %>
+          <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+          <% end %>
         </li>
         <li class="nav-item p-0">
-          <a class="nav-link" href="#">Register</a>
+          <%= link_to "Register", new_user_registration_path, class: "nav-link", class: "nav-link" %>
         </li>
       </ul>
     </div>
