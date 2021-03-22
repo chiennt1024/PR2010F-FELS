@@ -35,3 +35,74 @@
 	color: #C4CFDD !important;
     font-size: 14px;	
 }
+
+.v-button-primary {
+    background-color: #FAD20B;
+}
+.v-button-large {
+    height: 48px;
+    border-radius: 24px;
+}
+.v-button {
+    color: #191D28;
+    font-family: 'Poppins SemiBold';
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 21px;
+    text-align: center;
+}
+.v-button {
+    padding: 0.375em 2em;
+}
+.capitalize {
+    text-transform: capitalize !important;
+}
+
+.course-main .course-detail {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 13px 0px #00000021;
+    border-radius: 6px;
+}
+
+.course-main .course-detail__enroll {
+    border-bottom: 1px solid #EAF0F7;
+}
+.course-main .course-detail__info {
+    border-bottom: 1px solid #EAF0F7;
+}
+
+.course-detail__thumbnail img{
+    width: 100%;
+}
+
+.course-markdown__desc {
+    color: #C4CFDD;
+    font-family: Roboto;
+    font-size: 16px;
+    letter-spacing: 0;
+    margin-top: 5px;
+    width: 100%;
+    max-width: 100%;
+    line-height: 1.5;
+}
+
+.md-contents {
+    color: #fff !important;
+    padding-left: 15px;
+    width: 90%;
+    font-family: 'Roboto Regular';
+    font-size: 16px;
+    letter-spacing: 0;
+    line-height: 24px;
+}
+
+.course-markdown__desc .md-contents p {
+    color: #fff !important;
+    font-size: 16px !important;
+}
+
+.course-main__info{
+    padding-left: 15px;
+    color: #fff !important;
+}
