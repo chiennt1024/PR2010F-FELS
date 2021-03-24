@@ -12,7 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_03_23_031852) do
 
-
   create_table "answers", charset: "utf8", force: :cascade do |t|
     t.integer "question_id"
     t.text "answer_content"
