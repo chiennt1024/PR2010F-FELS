@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'static_pages/index'
+  end
   get 'exam/show'
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   resources :courses
 
   get 'courses/index'
@@ -19,6 +21,6 @@ Rails.application.routes.draw do
     delete "signout" => "devise/sessions#destroy"
   end
 
-    resources :categories
+  resources :categories
   
 end
