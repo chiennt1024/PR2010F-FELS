@@ -1,0 +1,38 @@
+<% provide(:title, "Home") %>
+<div class="pb-2 mb-3 border-bottom">
+    <h1 class="h2">Category</h1>
+</div>
+<div class="d-flex flex-column justify-center mt-4">
+    <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Category</th>
+                <th scope="col">Created at</th>
+                <th scope="col">
+                    <!-- Button trigger modal -->
+                    <%= link_to "Add new", '#', class: "btn btn-primary btn-sm", data: {toggle: 'modal', target: '#newCategoryModel'} %>
+
+                    <!-- Modal -->
+                    <%= render 'form', category: @category %>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @categories.each do |c| %>
+            <tr>
+                <th scope="row"><%= c.id %></th>
+                <td><%= c.category_name %></td>
+                <td><%= c.created_at %></td>
+                <td>
+                    <%= link_to "Edit", edit_admin_category_path(c.id), class: "btn btn-primary btn-sm" %>
+                    <%= link_to "Delete", admin_category_path(c.id), method: :delete, data: {confirm: "You sure?"}, class: "btn btn-danger btn-sm" %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
