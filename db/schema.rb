@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_23_031852) do
+ActiveRecord::Schema.define(version: 2021_03_24_072931) do
 
   create_table "answers", charset: "utf8", force: :cascade do |t|
     t.integer "question_id"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2021_03_23_031852) do
     t.string "course_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "category_id"
   end
 
   create_table "exam_answers", charset: "utf8", force: :cascade do |t|
@@ -55,10 +56,18 @@ ActiveRecord::Schema.define(version: 2021_03_23_031852) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "objectives", charset: "utf8", force: :cascade do |t|
+    t.string "objective_title"
+    t.integer "course_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "questions", charset: "utf8", force: :cascade do |t|
     t.string "question_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "course_id"
   end
 
   create_table "user_courses", charset: "utf8", force: :cascade do |t|

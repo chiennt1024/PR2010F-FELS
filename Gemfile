@@ -9,7 +9,6 @@ gem "devise"
 gem "omniauth", '~>1.0.0'
 gem "omniauth-google-oauth2"
 gem "omniauth-facebook"
-gem 'rails_admin'
 # Use sqlite3 as the database for Active Record
 gem 'mysql2'
 # Use Puma as the app server
