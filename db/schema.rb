@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_102520) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "category_id"
+    t.integer "user_id"
   end
 
   create_table "exam_answers", charset: "utf8", force: :cascade do |t|

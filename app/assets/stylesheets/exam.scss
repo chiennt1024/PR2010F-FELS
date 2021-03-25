@@ -1,5 +1,5 @@
 .create-test .test-view__left {
-    z-index: 2;
+    /*z-index: 2;*/
     border: 1px solid #EAF0F7;
     border-radius: 6px 0 0 6px;
     background-color: #FFFFFF;
@@ -29,7 +29,7 @@
 .create-test .test-view__right {
     margin-left: -1px;
     padding: 50px 40px;
-    z-index: 1;
+    /*z-index: 1;*/
     border: 1px solid #EAF0F7;
     border-radius: 0 6px 0 0;
     background-color: #FFFFFF;
@@ -42,4 +42,9 @@
 
 .create-test .test-view__left {
     width: 412px !important;
+}
+
+.md-contents{
+    color: #000 !important;
+
 }

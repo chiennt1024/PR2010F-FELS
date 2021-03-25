@@ -22,21 +22,36 @@
 					<h4>Categorites</h4>
 				</div>
 				<hr>
-
 				<%= render @categories %>
-
+				
 			</div>
 
 			<div class="col-md-10" style="background-color: #e2e8f0; min-height: 500px">
 
 				<div>
-					<%= render @courses %>
+					<div class="certificates__item mt-3 row rounded">
+						<img class="col-4 p-0 rounded" src="/assets/default.png">
+						<div class="body col-8 pt-2">
+							<div class="title">
+								<p class="cursor-pointer pt-2">
+									<a href="#">Ruby advance course</a>
+								</p>
+							</div>
+							<div class="info mt-5">
+								<div class="d-flex bd-highlight">
+									<div class="p-2 flex-fill bd-highlight">
+										<a href="#" class="badge badge-primary">Beginning Level</a>
+									</div>
+									<div class="p-2 flex-fill bd-highlight">Students: 2</div>
+									<div class="p-2 flex-fill bd-highlight">Created at: 19/03/2021</div>
+									<div class="p-2 flex-fill bd-highlight">Views: 2</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 
 			</div>
 		</div>
 	</div>
 </section>
-
-
-
