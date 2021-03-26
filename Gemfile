@@ -6,6 +6,7 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.1.1'
 gem "devise"
+gem 'pagy'
 gem "omniauth", '~>1.0.0'
 gem "omniauth-google-oauth2"
 gem "omniauth-facebook"

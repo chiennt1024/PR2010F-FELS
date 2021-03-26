@@ -1,0 +1,38 @@
+<% provide(:title, "Question manage") %>
+<div class="pb-2 mb-3 border-bottom">
+    <h1 class="h2">Question</h1>
+</div>
+<div class="d-flex flex-column justify-center mt-4">
+    <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Question</th>
+                <th scope="col">Course</th>
+                <th scope="col">Created at</th>
+                <th scope="col">
+                    <!-- Button trigger modal -->
+                    <%= link_to "Add new", new_admin_question_path, class: "btn btn-primary btn-sm" %>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @questions.each do |c| %>
+            <tr>
+                <th scope="row"><%= c.id %></th>
+                <td><%= c.question_name %></td>
+                <td><%= c.co_course_name %></td>
+                <td><%= c.created_at %></td>
+                <td>
+                    <%= link_to "Edit", edit_admin_question_path(c), class: "btn btn-primary btn-sm" %>
+                    <%= link_to "Delete", admin_question_path(c), method: :delete, data: {confirm: "You sure?"}, class: "btn btn-danger btn-sm" %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <%== pagy_bootstrap_nav(@pagy) %>
+</div>
