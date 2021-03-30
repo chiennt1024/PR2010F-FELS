@@ -12,6 +12,7 @@ window.$ = window.jquery = jquery;
 require("jquery")
 import "bootstrap"
 import "@fortawesome/fontawesome-free/js/all";
+import "packs/select"
 
 Rails.start()
 Turbolinks.start()

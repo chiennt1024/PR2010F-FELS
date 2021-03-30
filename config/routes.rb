@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :categories
+    resources :questions
     get 'static_pages/index'
   end
   get 'exam/show'
