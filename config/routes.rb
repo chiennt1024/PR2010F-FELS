@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :admin do
     resources :categories
     resources :questions
@@ -7,8 +8,9 @@ Rails.application.routes.draw do
   get 'exam/show'
   resources :courses
 
-  get 'courses/index'
-  get 'courses/show'
+
+  # get 'courses/index'
+  # get 'courses/show'
   devise_for :users,
   path: '',
   path_names: {sign_in: 'login' ,sign_out: 'logout' ,edit: 'profile',sign_up: 'resgistration'},
@@ -24,5 +26,9 @@ Rails.application.routes.draw do
   end
 
   resources :categories
+
+  resources :courses
+  resources :exams
+  
   
 end

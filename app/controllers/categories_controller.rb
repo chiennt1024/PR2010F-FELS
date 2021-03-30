@@ -1,8 +1,14 @@
 class CategoriesController < ApplicationController
 	before_action :find_category, only: [:show]
 
+	def index
+		@categories = Category.all
+	end
+
 	def show
-		# @categories = Category.all
+		# @courses = Course.where(category_id: params[:id])
+		@categories = Category.all
+		@courses = @category.courses
 	end
 
 	private
@@ -13,4 +19,5 @@ class CategoriesController < ApplicationController
 			redirect_to root_path
 		end
 	end
+
 end

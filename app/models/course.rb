@@ -4,4 +4,5 @@ class Course < ApplicationRecord
 	has_many :exams
 	has_many :objectives
 	belongs_to :category
+	has_many :questions
 end

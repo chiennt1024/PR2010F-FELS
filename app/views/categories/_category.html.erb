@@ -1,10 +1,8 @@
-
-
 <div class="row block-4">
 	<div class="col-md-2">
 		<input type="checkbox" class="ant-checkbox-input" value="Linux">
 	</div>
 	<div class="col-md-10 ant-checkbox-group-item">
-		<span><%= @category.category_name %></span>
+		<%= link_to category.category_name, category_path(category), class: "btn btn-primary" %>
 	</div>
 </div>
