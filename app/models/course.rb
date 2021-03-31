@@ -5,4 +5,5 @@ class Course < ApplicationRecord
 	has_many :objectives
 	belongs_to :category
 	has_many :questions
+	validates :course_name, presence: true
 end
