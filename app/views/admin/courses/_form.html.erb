@@ -1,0 +1,26 @@
+<%= form_with(model: [:admin, @course]) do |form| %>
+<div class="modal fade" id="newCourseModel" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="courseModalLabel">New Course</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <%= form.collection_select(:category_id, Category.all, :id, :category_name, {prompt: "Select category"}, {class: "form-control course-select"}) %>
+                </div>
+                <div class="form-group">
+                    <%= form.text_field (:course_name), class: "form-control", id: "course_name", placeholder: "Course" %>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                <%= form.submit 'Add', class: "btn btn-primary btn-sm"%>
+            </div>
+        </div>
+    </div>
+</div>
+<% end %>
