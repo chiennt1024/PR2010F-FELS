@@ -2,7 +2,12 @@ class Admin::QuestionsController < Admin::AdminController
   before_action :set_question, only: %i[ show edit update destroy ]
 
   def index
-    @pagy, @questions = pagy(Question.all, items: 10)
+    if params[:question].present?
+      Question.reindex
+      @questions = Question.search params[:question]
+    else
+      @pagy, @questions = pagy(Question.all, items: 10)
+    end
   end
 
   def new
