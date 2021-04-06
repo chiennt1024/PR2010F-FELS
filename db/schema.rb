@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_102520) do
+ActiveRecord::Schema.define(version: 2021_04_06_051232) do
 
   create_table "answers", charset: "utf8", force: :cascade do |t|
     t.integer "question_id"
@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2021_03_26_102520) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "role"
+    t.integer "admin"
     t.string "name"
     t.string "provider"
     t.string "uid"

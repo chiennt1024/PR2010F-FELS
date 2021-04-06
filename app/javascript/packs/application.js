@@ -13,6 +13,7 @@ require("jquery")
 import "bootstrap"
 import "@fortawesome/fontawesome-free/js/all";
 import "packs/select"
+import "packs/questions"
 
 Rails.start()
 Turbolinks.start()
