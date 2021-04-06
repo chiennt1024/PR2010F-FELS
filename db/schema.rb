@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2021_03_26_102520) do
     t.string "name"
     t.integer "user_id"
     t.integer "course_id"
-    t.integer "number_question"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

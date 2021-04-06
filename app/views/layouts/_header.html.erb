@@ -31,13 +31,24 @@
         </li>
         <li class="nav-item p-0">
           <% if current_user  %>
-          <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_user.email %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%= link_to "Enrolled Courses", '#', class: "dropdown-item" %>
+          <%= link_to "Tests", '#', class: "dropdown-item" %>
+          <%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
+          <div class="dropdown-divider"></div>
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+        </div>
+      </li>
           <% else %>
           <%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+          <li class="nav-item p-0">
+            <%= link_to "Register", new_user_registration_path, class: "nav-link", class: "nav-link" %>
+          </li>
           <% end %>
-        </li>
-        <li class="nav-item p-0">
-          <%= link_to "Register", new_user_registration_path, class: "nav-link", class: "nav-link" %>
         </li>
       </ul>
     </div>

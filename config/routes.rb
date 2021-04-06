@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resources :categories
     resources :questions
     resources :courses
+    root 'static_pages#index'
     get 'static_pages/index'
   end
   get 'exam/show'
