@@ -1,14 +1,57 @@
 class ExamsController < ApplicationController
-	before_action :find_exam, only: [:show]
-	def show
-	end
+  before_action :find_course, only: [:new, :show]
+  before_action :find_exam, only: [:show]
+  before_action :logged_in_user, only: [:create]
+  def new
+    @exam = Exam.new 
+    for i in 1..@course.questions.count
+      @exam.results.build
+    end
 
-	private
-	def find_exam
-		@exam = Exam.find_by course_id: params[:course_id]
-		unless @exam.present?
-			flash[:success] = "Exam doesn't exist"
-			redirect_to categories_path
-		end
-	end
+    @questions = @course.questions
+
+  end
+
+  def create
+    @exam = current_user.exams.new exam_params
+    if @exam.save!
+     flash[:success]="exam created!"
+     redirect_to @exam
+     else
+      flash[:danger]="Creating examanswer fail!"
+      render :new
+    end
+  end
+
+  def show
+  end
+
+  private
+  def find_course
+    @course = Course.find_by id: params[:course_id]
+    unless @course.present?
+     flash[:success] = "Course doesn't exist"
+     redirect_to root_path
+   end
+  end
+
+  def exam_params
+    params.require(:exam).permit(:exam_name, :course_id, :user_id,  :results_attributes => [:question_id, :answer_id])
+  end
+
+  def find_exam
+    @exam = Exam.find_by id: params[:id]
+    unless @exam.present?
+     flash[:success] = "Exam doesn't exist"
+     redirect_to root_path
+   end
+  end
+
+  def logged_in_user
+    unless current_user.present?
+      flash[:danger] = "Please log in."
+      redirect_to courses_path
+    end
+  end
+
 end
