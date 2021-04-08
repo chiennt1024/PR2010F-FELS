@@ -1,0 +1,24 @@
+<div class="container">
+	Chao mung ban den bai kiem tra
+</div>
+
+<div class="container">
+	<%=form_for @exam do |exam|%>
+	<%= exam.hidden_field :course_id,value: @course.id %>
+	<br>
+
+
+	<%= exam.fields_for :results do |result| %>
+	<%= result.hidden_field :question_id, value: @questions[result.index].id %>
+	<%= @questions[result.index].question_name %><br>
+
+	<% @questions[result.index].answers.each do |an| %>
+	<%= result.check_box :answer_id, {}, an.id, false %>
+	<%= an.answer_content %><br>
+	<% end %><hr>
+
+	<% end %>
+
+	<%= exam.submit "Submit now"%>
+	<% end %>
+</div>

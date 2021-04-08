@@ -1,7 +1,7 @@
 class Question < ApplicationRecord
 	searchkick
-	has_many :exam_questions
-	has_many :exams, through: :exam_questions
+	has_many :results
+	has_many :exams, through: :results
 	has_many :answers, dependent: :destroy
 	belongs_to :course
 	validates :question_name, presence: true

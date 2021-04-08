@@ -8,7 +8,10 @@ Rails.application.routes.draw do
     get 'static_pages/index'
   end
   get 'exam/show'
-  resources :courses
+
+  resources :courses do
+    resources :exams
+  end
 
 
   # get 'courses/index'
@@ -28,9 +31,10 @@ Rails.application.routes.draw do
   end
 
   resources :categories
-
   resources :courses
   resources :exams
+
+  resources :examanswers
   
   
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_06_051232) do
+ActiveRecord::Schema.define(version: 2021_04_08_041558) do
 
   create_table "answers", charset: "utf8", force: :cascade do |t|
     t.integer "question_id"
@@ -34,24 +34,11 @@ ActiveRecord::Schema.define(version: 2021_04_06_051232) do
     t.integer "user_id"
   end
 
-  create_table "exam_answers", charset: "utf8", force: :cascade do |t|
-    t.integer "answer_id"
-    t.integer "exam_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "exam_questions", charset: "utf8", force: :cascade do |t|
-    t.integer "question_id"
-    t.integer "exam_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "exams", charset: "utf8", force: :cascade do |t|
     t.string "name"
     t.integer "user_id"
     t.integer "course_id"
+    t.integer "number_question"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -68,6 +55,14 @@ ActiveRecord::Schema.define(version: 2021_04_06_051232) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "course_id"
+  end
+
+  create_table "results", charset: "utf8", force: :cascade do |t|
+    t.integer "question_id"
+    t.integer "answer_id"
+    t.integer "exam_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "user_courses", charset: "utf8", force: :cascade do |t|
