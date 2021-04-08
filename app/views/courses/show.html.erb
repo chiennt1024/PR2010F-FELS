@@ -1,90 +1,215 @@
-<div class="row jumbotron">
-	<div class="create-test container my-4">
-		<div class="create-test__content-flex">
-			<div class="d-flex test-view">
-				<div class="test-view__left">
-					<div class="flex">
-						<div class="list-heading">
-							Question List
-						</div>
-						<div class="d-flex items-center">
-							<div class="d-flex flex-row justify-center text-center items-">
-								Countdown
-							</div>
-						</div>
-					</div>
-					<hr>
-					<div class="d-flex flex-column">
-						<div class="d-flex flex-column label-questions justify-center">
-							<div class="d-flex">
-								
-								<div class="flex items-center">
-									<div class="border-question">
-									</div>
-									<div class="text">
-										Click on the question for quick view
-									</div>
-								</div>
-							</div>
-							<hr>
-						</div>
-						<div class="d-flex flex-wrap question-list">
+<% provide(:title, "Course Title") %>
+<section class="detail-banner">
+    <div class="detail-banner__main detail-banner__breadcrumb">
+        <ol class="breadcrumb bg-transparent text-white">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item">
+                <%= link_to "Course", courses_path %>
+            </li>
+            <li class="breadcrumb-item active"><%=@course.course_name%></li>
+        </ol>
+    </div>
+    <div class="course-main pt-2">
+        <div class="course-main__content pt-0">
+            <p class="course-main__content__name text-white">
+                <%=@course.course_name%>
+            </p>
+            <p class="course-markdown__desc">
+            <div class="md-contents">
+                <p>Hypertext Markup Language (HTML) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.</p>
+                <p>Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.</p>
+                <p>The latest version of HTML is HTML5, maintained by the World Wide Web Consortium (W3C).</p>
+            </div>
+            </p>
+        </div>
+        <div class="course-main__info row">
+            <div class="col">
+                <a href="#" class="badge badge-primary">Beginning Level</a>
+            </div>
+            <div class="col">
+                <p>
+                    <i class="far fa-calendar-alt"></i>
+                    <span>
+                        Last updated 1/2021
+                    </span>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="course-main">
+    <div class="row jumbotron">
+        <div class="col-8">
+            <p class="text">
+                Objectives List
+            </p>
+            <div class="objective-list">
+                <div class="card border-light mb-3">
+                    <div class="card-header">
+                        <div class="d-flex">
+                            <span><%= @course.course_name %></span>
+                            <span class="ml-auto">
+                                60 questions/30 minutes
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-body pt-0">
+                        <div class="d-flex flex-column">
+                            <div class="p-2 border-bottom">
+                                <i class="far fa-file-alt text-warning mr-2"></i>
+                                <span class="mr-5">
+                                    Objective
+                                </span>
+                                <span>Media Querry and Responsive Design</p>
+                            </div>
+                            <div class="p-2 border-bottom">
+                                <i class="far fa-file-alt text-warning mr-2"></i>
+                                <span class="mr-5">
+                                    Objective
+                                </span>
+                                <span>Flexbox Layout</p>
+                            </div>
+                            <div class="p-2 border-bottom">
+                                <i class="far fa-file-alt text-warning mr-2"></i>
+                                <span class="mr-5">
+                                    Objective
+                                </span>
+                                <span>Grid Layout</p>
+                            </div>
+                            <div class="p-2 border-bottom">
+                                <i class="far fa-file-alt text-warning mr-2"></i>
+                                <span class="mr-5">
+                                    Objective
+                                </span>
+                                <span>Table Layout</p>
+                            </div>
+                            <div class="p-2 border-bottom">
+                                <i class="far fa-file-alt text-warning mr-2"></i>
+                                <span class="mr-5">
+                                    Objective
+                                </span>
+                                <span>2D and 3D Transforms</p>
+                            </div>
+                            <div class="p-2 border-bottom">
+                                <i class="far fa-file-alt text-warning mr-2"></i>
+                                <span class="mr-5">
+                                    Objective
+                                </span>
+                                <span>Transitions</p>
+                            </div>
+                            <div class="p-2 border-bottom">
+                                <i class="far fa-file-alt text-warning mr-2"></i>
+                                <span class="mr-5">
+                                    Objective
+                                </span>
+                                <span>Animations</p>
+                            </div>
+                        </div>
+                        <div class="d-flex text-center justify-content-center pt-4">
+                            <% if current_user.present?%>
+                            <%= link_to "Do Exam", new_course_exam_path(@course), class: "btn btn-warning btn-sm" %>
+                            <% else %>
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#loginModal">
+                                Do Exam
+                            </button>
 
-							<% @questions.each.with_index(1) do |question, index|%>
-							<div class="list-item">
-								<a>
-									<div class="question-item d-flex items-center justify-center number_question">
-										<%= link_to index, course_path(question_id: question.id, question_index: index), method: :get ,data: { confirm: "You sure?" }, remote: true %>
-									</div>
-								</a>
-							</div>
-							<% end %>
-
-						</div>
-					</div>
-				</div>
-
-				<div class="test-view__right content_question_answer container" id="content_question_answer">
-					<div class="test-view__exam-detail">
-						<div class="d-flex justify-between item-center">
-							<div class="question-heading">
-								Question 1
-							</div>
-						</div>
-						<div class="my-4">
-							<div class="md-contents">
-								<p><%= @question.question_name %></p>
-							</div>
-						</div>
-						<hr>
-					</div>
-					<div class="mt-2">
-						<div class="d-flex flex-column question-answers v-answers">
-							<div class="title-note">
-								This is your answer here:
-							</div>
-							<div class="radio-group">
-
-								<% @answers.each do |answer| %>
-								<div class="form-check">
-									<input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
-									<label class="form-check-label" for="exampleRadios1">
-										<%= answer.answer_content %>
-									</label>
-								</div>
-								<% end %>
-
-							</div>
-						</div>
-						<div class="d-flex">
-							<button>Select</button>
-						</div>
-					</div>
-				</div>
-
-
-
-			</div>
-		</div>
-	</div>
-</div>
+                            <!-- Modal -->
+                            <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Require <%= link_to "Sign In", new_user_session_path %> to do exam
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="course-detail">
+                <div class="p-2 course-detail__thumbnail">
+                    <img src="/assets/html-course.jpg">
+                </div>
+                <div class="course-detail__enroll py-2">
+                    <div class="text-center">
+                        <button type="button" class="btn btn-warning capitalize">Enroll</button>
+                    </div>
+                </div>
+                <div class="course-detail__info py-4 pl-4">
+                    <i class="text-warning fas fa-book mr-2"></i>
+                    <span>This course includes:</span>
+                </div>
+                <div class="course-detail__include py-4 pl-4 px-4">
+                    <div class="d-flex justify-content-between">
+                        <div class="course-detail__include__left">
+                            <i class="text-warning far fa-clock"></i>
+                            <span>Duration</span>
+                        </div>
+                        <div class="course-detail__include__right">
+                            <p>1 hour 30 minutes</p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="course-detail__include__left">
+                            <i class="text-warning far fa-file"></i>
+                            <span>Quizzes</span>
+                        </div>
+                        <div class="course-detail__include__right">
+                            <p>1 Exams - 80 Questions</p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="course-detail__include__left">
+                            <i class="text-warning far fa-eye"></i>
+                            <span>View</span>
+                        </div>
+                        <div class="course-detail__include__right">
+                            <p>756</p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="course-detail__include__left">
+                            <i class="text-warning fas fa-bolt"></i>
+                            <span>Enrolled Students</span>
+                        </div>
+                        <div class="course-detail__include__right">
+                            <p>115</p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="course-detail__include__left">
+                            <i class="text-warning far fa-file-alt"></i>
+                            <span>Total Tests</span>
+                        </div>
+                        <div class="course-detail__include__right">
+                            <p>134</p>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="course-detail__include__left">
+                            <i class="text-warning fas fa-question"></i>
+                            <span>Total Questions</span>
+                        </div>
+                        <div class="course-detail__include__right">
+                            <p>155</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
