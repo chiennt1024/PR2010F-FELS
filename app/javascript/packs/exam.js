@@ -1,15 +1,11 @@
 $(document).ready(function() {
     $('input[type="checkbox"]').on('change', function() {
         $('input[name="' + this.name + '"]').not(this).prop('checked', false);
-        let question_id = $('input[name="' + this.name + '"]').parent().parent().parent().attr('id');
-        console.log($('input[name="' + this.name + '"]').parent().parent().parent().attr('id'));
-        $('#' + question_id + ' .answer_id').val($('input[name="' + this.name + '"]:checked').val());
-        console.log($('input[name="' + this.name + '"]').parent().parent().parent().attr('id'));
-        console.log($('input[name="' + this.name + '"]').parent().find('input[name="' + this.name + '"]:checked').length > 0);
+        let question_id = $('input[name="' + this.name + '"]').closest('.tab-content').attr('id');
         if ($('input[name="' + this.name + '"]').parent().find('input[name="' + this.name + '"]:checked').length > 0) {
-            $('.' + $('input[name="' + this.name + '"]').parent().parent().parent().attr('id')).addClass('answer-bg');
+            $('.' + question_id).addClass('answer-bg');
         } else {
-            $('.' + $('input[name="' + this.name + '"]').parent().parent().parent().attr('id')).removeClass('answer-bg');
+            $('.' + question_id).removeClass('answer-bg');
         }
     });
 
@@ -39,7 +35,6 @@ $(document).ready(function() {
     });
 
     $('.previous-question').on('click', function() {
-        console.log($('ul.tabs li').index($('li.current')));
         var currentQuestion = $('ul.tabs li').index($('li.current'));
         $('ul.tabs li').removeClass('current');
         $('.tab-content').removeClass('current');

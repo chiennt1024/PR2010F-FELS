@@ -1,0 +1,103 @@
+<%= provide(:title, "Exam Result")%>
+<div class="row jumbotron">
+	<div class="create-test container my-4">
+		<div class="create-test__content-flex">
+			<div id="questionTabs">
+				<div class="d-flex test-view">
+					<div class="test-view__left">
+						<div class="flex">
+							<div class="list-heading">
+								Question List
+							</div>
+						</div>
+						<hr>
+						<div class="d-flex flex-column">
+							<div class="d-flex flex-column label-question justify-content-center border-bottom">
+								<div class="d-flex flex-row justify-content-between">
+									<div class="d-flex align-items-center">
+										<div class="border-question border-corrected"></div>
+										<div class="pl-2 text">
+											Corrected answer
+										</div>
+									</div>
+									<div class="d-flex align-items-center">
+										<div class="border-question border-incorrected"></div>
+										<div class="pl-2 text">
+											Incorrected
+										</div>
+									</div>
+								</div>
+								<div class="note d-flex align-items-center"><span role="img" aria-label="exclamation-circle" class="anticon anticon-exclamation-circle"><svg viewBox="64 64 896 896" focusable="false" class="" data-icon="exclamation-circle" width="1em" height="1em" fill="currentColor" aria-hidden="true">
+									<path d="M512 64C264.6 64 64 264.6 64 512s200.6 448 448 448 448-200.6 448-448S759.4 64 512 64zm0 820c-205.4 0-372-166.6-372-372s166.6-372 372-372 372 166.6 372 372-166.6 372-372 372z"></path>
+									<path d="M464 688a48 48 0 1096 0 48 48 0 10-96 0zm24-112h48c4.4 0 8-3.6 8-8V296c0-4.4-3.6-8-8-8h-48c-4.4 0-8 3.6-8 8v272c0 4.4 3.6 8 8 8z"></path>
+								</svg></span>
+								<span class="ml-2">Click on the question for detail</span>
+							</div>
+							<div>
+								Ket qua cua ban: <%= @result %>
+							</div>
+						</div>
+						<ul class="d-flex flex-wrap question-list tabs">
+							<% @questions.each_with_index do |q, index| %>
+							<li class="list-item tab-link" data-tab="question-<%= q.id %>">
+								<a href="#question-<%= q.id %>" data-toggle="tab">
+									<div class="question-item d-flex align-items-center justify-content-center question-<%= q.id %> <%= @exam.results[index].answer_is_correct &&  @exam.results[index].present? ? 'bg-item-corrected' : 'bg-item-incorrected'%>"><%= index + 1 %></div>
+								</a>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+				<div class="test-view__right" id="test-view">
+					<div class="tab-contents">
+						<% @questions.each_with_index do |q, index| %>
+						<div class="tab-content" id="question-<%= q.id %>">
+							<div class="test-view__exam-detail">
+								<div class="d-flex flex-column justify-content-between align-item-center">
+									<div class="question-heading">
+										Question <%= index + 1 %>
+									</div>
+									<div class="my-4">
+										<div class="md-contents">
+											<p><%= q.question_name %></p>
+										</div>
+									</div>
+								</div>
+								<hr>
+							</div>
+							<div class="mt-2">
+								<div class="d-flex flex-column show-question-answers v-answers">
+									<div class="title-note">
+										This is your answer here:
+
+									</div>
+									<div class="input-group d-flex flex-column">
+										<% @questions.find(q.id).answers.each_with_index do |answer,i| %>
+										<div class="d-flex align-item-center form-check pt-2">
+											<%= check_box_tag "answer", answer.id, @exam.results[index].answer_id.present?, class: "answer-checkboxes", id: "answer#{answer.id}" %>
+											<div class="md-contents <%= @exam.results[index].answer_is_correct.present? && answer.is_correct ? 'bg-item-corrected': @exam.results[index].answer_id == answer.id ? 'bg-item-incorrected' : '' %>">
+												<label class="form-check-label" for="answer<%=answer.id%>">
+													<%= answer.answer_content %>
+												</label>
+											</div>
+										</div>
+
+										<% end %>
+									</div>
+								</div>
+							</div>
+							<div class="d-flex justify-content-between pt-2">
+								<a class="btn btn-warning btn-sm previous-question">&lt&lt Previous Question</a>
+								<a class="btn btn-warning btn-sm next-question">Next Question &gt&gt</a>
+							</div>
+						</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+
+<%= javascript_pack_tag "exam" %>
