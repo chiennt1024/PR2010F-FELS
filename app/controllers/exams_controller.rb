@@ -17,12 +17,11 @@ class ExamsController < ApplicationController
   end
 
   def create
-    
     @exam = current_user.exams.new exam_params
     if @exam.save!
      flash[:success]="exam created!"
      redirect_to course_exam_path(@exam.course_id,@exam)
-     else
+    else
       flash[:danger]="Creating examanswer fail!"
       render :new
     end

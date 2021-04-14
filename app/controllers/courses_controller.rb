@@ -1,7 +1,15 @@
 class CoursesController < ApplicationController
   before_action :find_course, only: [:show]
   def index
-  	@courses = Course.all
+    if params[:category].present?
+      @courses = Course.where(category_id: params[:category])
+    elsif params[:course].present?
+      Course.reindex
+      @courses = Course.search params[:course]
+    else
+  	  @pagy, @courses = pagy(Course.all, items: 10)
+    end
+ 
   end
   
   def show

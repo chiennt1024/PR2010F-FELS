@@ -1,4 +1,5 @@
 class Course < ApplicationRecord
+	searchkick
 	has_many :exams
 	has_many :users, through: :exams
 	has_many :objectives

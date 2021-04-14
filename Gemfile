@@ -9,6 +9,7 @@ gem "devise"
 gem 'cancancan'
 gem 'searchkick'
 gem 'pagy'
+gem 'faker'
 gem "awesome_print"
 gem "select2-rails"
 gem "omniauth", '~>1.0.0'

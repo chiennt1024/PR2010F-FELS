@@ -2148,7 +2148,7 @@ textarea.ant-input {
 
 .v-layout-learning-path__bottom-right {
   position: absolute;
-  background: url('/images/learning-path-right.svg') no-repeat 100% 0;
+  background: url('/assets/learning-path-right.svg') no-repeat 100% 0;
   background-size: contain;
   bottom: 0;
   right: 0;

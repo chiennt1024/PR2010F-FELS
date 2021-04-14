@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_08_041558) do
+ActiveRecord::Schema.define(version: 2021_04_13_082745) do
 
   create_table "answers", charset: "utf8", force: :cascade do |t|
     t.integer "question_id"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2021_04_08_041558) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "category_id"
-    t.string "course_desc"
+    t.text "course_desc"
   end
 
   create_table "exams", charset: "utf8", force: :cascade do |t|

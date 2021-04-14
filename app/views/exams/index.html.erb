@@ -138,7 +138,7 @@
                                                    <tr class="ant-table-row ant-table-row-level-0">
                                                       <td class="ant-table-row-cell-break-word">
                                                          <div class="exam-title cursor-pointer">
-                                                            <p class="title"><%= exam.course.course_name %></p>
+                                                            <p class="title"><%= link_to exam.course.course_name, course_path(exam.course_id) %></p>
                                                             <p class="desc mt-1">•beginning level</p>
                                                          </div>
                                                       </td>
@@ -149,8 +149,12 @@
                                                       </td>
                                                       <td class="ant-table-row-cell-break-word">
                                                          <div class="exam-result">
-                                                            <p class="result"><span class="result-failed">failed</span></p>
-                                                            <p class="detail mt-1">0/<%= exam.course.questions.count %> questions</p>
+                                                            <% if exam.answers.where(is_correct: true).count >= 5 %>
+                                                               <p class="result"><span class="result-passed">passed</span></p>
+                                                            <% else %>
+                                                               <p class="result"><span class="result-failed">failed</span></p>
+                                                            <% end %>
+                                                            <p class="detail mt-1"><%= exam.answers.where(is_correct: true).count %>/<%= exam.course.questions.count %> questions</p>
                                                          </div>
                                                       </td>
                                                       <td class="ant-table-row-cell-break-word">
@@ -161,11 +165,12 @@
                                                       </td>
                                                       <td class="ant-table-row-cell-break-word">
                                                          <div class="exam-title">
-                                                            <p class="title"><time datetime="1618208096000">12/04/2021</time></p>
-                                                            <p class="desc mt-1"><time datetime="1618208096000">13:14:56</time></p>
+                                                            <p class="title"><time datetime="1618208096000"><%= exam.created_at.to_date %></time></p>
+                                                            <p class="desc mt-1"><time datetime="1618208096000"><%= exam.created_at.strftime("%I:%M%p") %></time></p>
                                                          </div>
                                                       </td>
                                                       <td class="ant-table-row-cell-break-word">
+                                                      <%= link_to course_exam_path(course_id: exam.course,id: exam) do %>
                                                          <div class="exam-detail rounded-full h-8 w-8 flex items-center justify-center">
                                                             <i aria-label="icon: eye" tabindex="-1" class="anticon anticon-eye">
                                                                <svg viewBox="64 64 896 896" focusable="false" class="" data-icon="eye" width="1em" height="1em" fill="currentColor" aria-hidden="true">
@@ -173,6 +178,7 @@
                                                                </svg>
                                                             </i>
                                                          </div>
+                                                      <% end %>
                                                       </td>
                                                    </tr>
                                                 <% end %>

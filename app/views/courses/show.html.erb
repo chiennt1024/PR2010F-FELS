@@ -1,10 +1,10 @@
-<% provide(:title, "Course Title") %>
+<% provide(:title, @course.course_name) %>
 <main class="v-layout-content flex-shrink-0 ant-layout-content">
    <div class="ant-row">
       <div class="ant-col v-layout-container ant-col-xs-24 ant-col-lg-24">
          <section class="detail-banner relative " style="background:url(&quot;/assets/banner-course-detail.png&quot;);min-height:35vh">
             <div class="detail-banner__main detail-banner__breadcrumb">
-               <div class="py-3 ant-breadcrumb"><span><span class="ant-breadcrumb-link"><a href="/">Home</a></span><span class="ant-breadcrumb-separator">&gt;</span></span><span><span class="ant-breadcrumb-link"><a href="/courses">Courses</a></span><span class="ant-breadcrumb-separator">&gt;</span></span><span><span class="ant-breadcrumb-link"><a href="/courses/html-for-beginners-4y1aKrReQG">HTML for Beginners</a></span><span class="ant-breadcrumb-separator">&gt;</span></span></div>
+               <div class="py-3 ant-breadcrumb"><span><span class="ant-breadcrumb-link"><%= link_to "Home", root_path %></span><span class="ant-breadcrumb-separator">&gt;</span></span><span><span class="ant-breadcrumb-link"><%= link_to "Courses", courses_path %></span><span class="ant-breadcrumb-separator">&gt;</span></span><span><span class="ant-breadcrumb-link"><%= link_to @course.course_name, @course %></span><span class="ant-breadcrumb-separator">&gt;</span></span></div>
             </div>
             <div class="course-main v-layout-center pt-5">
                <div class="ant-col course-main__col ant-col-xs-24 ant-col-sm-24 ant-col-lg-16">
@@ -16,12 +16,10 @@
                      </span>
                   </div>
                   <div class="course-main__content mb-8" style="min-height:20vh">
-                     <p class="course-main__content__name text-white">HTML for Beginners</p>
+                     <p class="course-main__content__name text-white"><%= @course.course_name %></p>
                      <p class="course-markdown__desc">
                      <div class="md-contents">
-                        <p>Hypertext Markup Language (HTML) is the standard markup language for documents designed to be displayed in a web browser. It can be assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript.</p>
-                        <p>Web browsers receive HTML documents from a web server or from local storage and render the documents into multimedia web pages. HTML describes the structure of a web page semantically and originally included cues for the appearance of the document.</p>
-                        <p>The latest version of HTML is HTML5, maintained by the World Wide Web Consortium (W3C).</p>
+                        <p><%= @course.course_desc %></p>
                      </div>
                      </p>
                   </div>
@@ -40,7 +38,7 @@
                                  <path d="M880 184H712v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H384v-64c0-4.4-3.6-8-8-8h-56c-4.4 0-8 3.6-8 8v64H144c-17.7 0-32 14.3-32 32v664c0 17.7 14.3 32 32 32h736c17.7 0 32-14.3 32-32V216c0-17.7-14.3-32-32-32zm-40 656H184V460h656v380zM184 392V256h128v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h256v48c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-48h128v136H184z"></path>
                               </svg>
                            </i>
-                           <!-- -->Last updated<!-- --> <!-- -->1/2021
+                           <!-- -->Last updated<!-- --> <!-- --><%= @course.updated_at.to_date %>
                         </p>
                      </div>
                   </div>
@@ -55,8 +53,8 @@
                      <div class="ant-card exam-card mb-8">
                         <div class="ant-card-head">
                            <div class="ant-card-head-wrapper">
-                              <div class="ant-card-head-title">HTML for Beginners Exam</div>
-                              <div class="ant-card-extra">80 questions/1 hour 30 minutes </div>
+                              <div class="ant-card-head-title"><%= @course.course_name %> Exam</div>
+                              <div class="ant-card-extra">10 questions/5 minutes </div>
                            </div>
                         </div>
                         <div class="ant-card-body">
@@ -335,7 +333,7 @@
                                  <p>Duration</p>
                               </div>
                               <div class="course-detail__include__right">
-                                 <p>1 hour 30 minutes </p>
+                                 <p>5 minutes </p>
                               </div>
                            </div>
                            <div class="flex justify-between px-10">
@@ -348,7 +346,7 @@
                                  <p>Quizzes</p>
                               </div>
                               <div class="course-detail__include__right">
-                                 <p>1 Exams - 80 Questions</p>
+                                 <p>1 Exams - 10 Questions</p>
                               </div>
                            </div>
                            <div class="flex justify-between px-10">
